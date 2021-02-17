@@ -1,5 +1,5 @@
 /**
- * 
+ * Java Maven App
  */
 package ie.lyit.mvnApps;
 
@@ -7,8 +7,11 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
+ * A Java program to validate IBAN
+ * 
  * @author Sunoj
- *
+ * @version 1.0
+ * @since 1.11
  */
 public class App {
 
@@ -20,7 +23,7 @@ public class App {
 	 * ibanToNumber() as argument which takes the reassigned value as argument.
 	 * Prints the result as per the returned value.
 	 * 
-	 * @param args
+	 * @param args - the command line arguments are not used for this app.
 	 */
 	public static void main(String[] args) {
 		var sc = new Scanner(System.in);
@@ -45,7 +48,7 @@ public class App {
 	 * A method which takes String value of IBAN. Checks whether it is valid or of
 	 * right length.
 	 * 
-	 * @param String iban
+	 * @param String iban - it takes the IBAN
 	 * @return True or False
 	 */
 	protected boolean isValidString(String iban) {
@@ -67,7 +70,7 @@ public class App {
 	 * remainder of corresponding BigInteger value of the passed argument when
 	 * divided by 97 is 1 and returns the result.
 	 * 
-	 * @param String iban
+	 * @param String iban - takes the value of IBAN to do the final checks
 	 * @return true or false
 	 */
 	protected boolean isValidIBAN(String iban) {
@@ -82,7 +85,7 @@ public class App {
 	 * unicodeValue(character) - unicodeValue(A)] And stores the number to the
 	 * StringBuilder object.
 	 * 
-	 * @param String iban
+	 * @param String iban - takes the value of IBAN to transform it to number
 	 * @return a String value of the StringBuilder object.
 	 */
 
