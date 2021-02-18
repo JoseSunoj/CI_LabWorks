@@ -1,5 +1,5 @@
 /**
- * Java Maven App
+ * mvnApps
  */
 package ie.lyit.mvnApps;
 
