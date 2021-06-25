@@ -29,6 +29,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: user/app:latest
+          tags: l00162972/mscplacprj2021:latest
           cache-from: type=registry,ref=l00162972/mscplacprj2021:latest
           cache-to: type=inline
