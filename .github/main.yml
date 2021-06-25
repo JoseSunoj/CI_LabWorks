@@ -1,47 +1,24 @@
-name: CI to Docker Hub 
+name: Build and push Docker images to DockerHub
 
 on:
   push:
-    tags:
-      - "v*.*.*"
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
-      - 
-        name: Checkout
-        uses: actions/checkout@v2
-      -       
-        name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v1
-      -     
-        name: Cache Docker layers
-        uses: actions/cache@v2
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
-      - 
-        uses: docker/login-action@v1 
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      -
-        name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: ./ 
-          file: ./Dockerfile
-          builder: ${{ steps.buildx.outputs.name }}
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/mscplacprj2021:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache
-      -
-        name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+    - uses: actions/checkout@master
+    - name: Get release version
+      id: get_version
+      run: echo ::set-env name=RELEASE_VERSION::`date +%F-%I-%M`
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: l00162972 / mscplacprj2021
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        tags: "latest,${{ env.RELEASE_VERSION }}"
+        buildoptions: "--compress --force-rm"
