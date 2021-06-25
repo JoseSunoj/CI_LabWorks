@@ -8,7 +8,7 @@ FROM maven:3-jdk-11-slim as build
 COPY ./src ./src
 COPY ./pom.xml ./pom.xml
 # RUN mvn clean package
-mvn clean install -U
+RUN mvn clean install -U
 
 # stage-2 
 # copies the above build image to the working dir
