@@ -14,11 +14,13 @@ RUN mvn clean package
 # and run the command in CMD
 
 FROM openjdk:11-jre-slim
+
 # ARG artifactid
 # ARG version
 # ENV artifact=${artifactid}-${version}.jar
 # ARG artifact
 # ENV artifact = ${artifact}
+
 WORKDIR /lyit
 
 # COPY --from=build target/${artifact} ./app.jar
