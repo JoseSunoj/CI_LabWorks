@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @author Sunoj
  * @version 1.0
  * @since 1.11
+ *
  */
 public class App {
 
