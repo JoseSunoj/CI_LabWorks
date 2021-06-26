@@ -33,8 +33,8 @@ jobs:
           context: .
 #           push: true
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKER_USERNAME }}/mscplacprj2021:v${{github.run_number}}
+          tags: ${{ secrets.DOCKER_REPO }}:v${{github.run_number}}
 
 #           tags: l00162972/mscplacprj2021:latest
-          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/mscplacprj2021:v${{github.run_number}}
+          cache-from: type=registry,ref=${{ secrets.DOCKER_REPO }}:v${{github.run_number}}
           cache-to: type=inline
