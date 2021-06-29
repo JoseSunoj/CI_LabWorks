@@ -33,15 +33,15 @@ jobs:
           context: .
 #           push: true
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKER_REPO }}:v${{github.run_number}}
+          tags: ${{ secrets.DOCKER_REPO }}:IbanValidator-v${{github.run_number}}
 
 #           tags: l00162972/mscplacprj2021:latest
          # Use an external cache source for the build, in this case DockerHub repo
-          cache-from: type=registry,ref=${{ secrets.DOCKER_REPO }}:v${{github.run_number}} 
+          cache-from: type=registry,ref=${{ secrets.DOCKER_REPO }}:IbanValidator-v${{github.run_number}} 
           cache-to: type=inline # inline writes the cache metadata into the image configuration
 #       -  
 #       Export image to Docker
 #       build result to be available in the Docker client through docker images to be able to use it in another step of your workflow
 #         name: Inspect
 #         run: |
-#           docker image inspect ${{ secrets.DOCKER_REPO }}:v${{github.run_number}}
+#           docker image inspect ${{ secrets.DOCKER_REPO }}:IbanValidator-v${{github.run_number}}
